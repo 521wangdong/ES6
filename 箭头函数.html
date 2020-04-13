@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+ES6 允许使用箭头（=>）定义函数
+
+箭头函数对于使用function关键字创建的函数有以下区别
+
+    箭头函数没有arguments（建议使用更好的语法，剩余运算符替代
+    箭头函数没有prototype属性，不能用作构造函数（不能用new关键字调用）
+    箭头函数没有自己this，它的this是词法的，引用的是上下文的this，即在你写
+    这行代码的时候就箭头函数的this就已经和外层执行上下文的this绑定了(这里个人
+    认为并不代表完全是静态的,因为外层的上下文仍是动态的可以使用call,apply,bind
+    修改,这里只是说明了箭头函数的this始终等于它上层上下文中的this)
+
+箭头函数替代了以前需要显式的声明一个变量保存this的操作，使得代码更加的简洁
+*/
+
+    //ES5写法:
+
+    // let constroller = {
+    //     makeRequest: function () {
+    //         let that = this
+    //         setTimeout(function () {
+    //             console.log(that.a) //1
+    //         })
+    //     },
+    //     a: 1
+    // }
+    // constroller.makeRequest()
+
+
+    //ES6箭头函数
+    // let constroller = {
+    //     makeRequest: function () {
+    //         //省了保存that的步骤
+    //         setTimeout(() => {
+    //             console.log(this.a) //1
+    //         })
+    //     },
+    //     a: 1
+    // }
+
+    // constroller.makeRequest()
+
+
+    //makeRequest后面的function不能使用箭头函数，因为这样它就会再使用上层的this，
+    //而再上层是全局的执行上下文，它的this的值会指向window,所以找不到变量a返回undefined
+
+    //在数组的迭代中使用箭头函数更加简洁，并且省略了return关键字
+    let arr = [1, 2, 3]
+    arr.filter(item => item === 2) //[2]
+
+    //不要在可能改变this指向的函数中使用箭头函数，类似Vue中的methods,computed中的方法,
+    //生命周期函数，Vue将这些函数的this绑定了当前组件的vm实例，如果使用箭头函数会强行改变this，
+    //因为箭头函数优先级最高（无法再使用call,apply,bind改变指向）
+</script>
+
+</html>

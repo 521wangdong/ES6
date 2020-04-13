@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+    解构赋值可以直接使用对象的某个属性，而不需要通过属性访问的形式使用，
+    对象解构原理个人认为是通过寻找相同的属性名，然后原对象的这个属性名的
+    值赋值给新对象对应的属性
+
+    数组解构的原理其实是消耗数组的迭代器，把生成对象的value属性的值赋
+    值给对应的变量
+    
+    */
+
+    let a = 1;
+    let b = 2;
+    [a, b] = [b, a]
+
+    console.log(a, b)
+</script>
+
+</html>
